@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeu de Devinette</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #jeu-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        input[type="number"] {
+            padding: 10px;
+            font-size: 1rem;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            width: 100px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #resultat {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="jeu-container">
+        <h2>Devinez le Nombre (1-100)</h2>
+        <input type="number" id="guess" min="1" max="100" placeholder="Votre choix">
+        <button onclick="vérifierAnser()">Devinez</button>
+        <p id="resultat"></p>
+    </div>
+
+    <script>
+        let resultat = document.getElementById("resultat");
+        let guess = document.getElementById("guess");
+        let computer = Math.floor(Math.random() * 100) + 1;
+        let score = 0;
+
+        function vérifierAnser() {
+            let anser = parseInt(guess.value);
+            if (isNaN(anser) || anser < 1 || anser > 100) {
+                resultat.textContent = "Entrez un nombre entre 1 et 100.";
+            } else {
+                score++;
+                if (anser === computer) {
+                    resultat.textContent = "Félicitations ! Vous l'avez deviné en " + score + " essais.";
+                    guess.disabled = true;
+                } else if (anser < computer) {
+                    resultat.textContent = "Trop bas ! Essayez encore.";
+                } else {
+                    resultat.textContent = "Trop élevé ! Essayez encore.";
+                }
+            }
+        }
+    </script>
+</body>
+</html>

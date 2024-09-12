@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcul de surface</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        #form-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label, select, button, #resultat {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        select {
+            padding: 10px;
+            font-size: 1rem;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px;
+            font-size: 1rem;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #resultat {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="form-container">
+        <h2>Calcul de surface</h2>
+        <label for="forme">Choisissez une forme :</label>
+        <select id="forme">
+            <option value="carré">Carré</option>
+            <option value="cercle">Cercle</option>
+            <option value="rectangle">Rectangle</option>
+            <option value="triangle">Triangle</option>
+        </select>
+
+        <button onclick="calculerSurface()">Calculer</button>
+
+        <p id="resultat"></p>
+    </div>
+
+    <script>
+        function calculerSurface() {
+            var forme = document.getElementById("forme").value;
+            var resultat = 0;
+
+            switch (forme) {
+                case "carré":
+                    var cote = parseFloat(prompt("Entrez la longueur du côté du carré :"));
+                    resultat = cote * cote;
+                    break;
+                case "cercle":
+                    var rayon = parseFloat(prompt("Entrez le rayon du cercle :"));
+                    resultat = Math.PI * rayon * rayon;
+                    break;
+                case "rectangle":
+                    var longueur = parseFloat(prompt("Entrez la longueur du rectangle :"));
+                    var largeur = parseFloat(prompt("Entrez la largeur du rectangle :"));
+                    resultat = longueur * largeur;
+                    break;
+                case "triangle":
+                    var base = parseFloat(prompt("Entrez la base du triangle :"));
+                    var hauteur = parseFloat(prompt("Entrez la hauteur du triangle :"));
+                    resultat = (base * hauteur) / 2;
+                    break;
+                default:
+                    alert("Veuillez choisir une forme.");
+            }
+
+            document.getElementById("resultat").textContent = "La surface du " + forme + " est : " + resultat.toFixed(2);
+        }
+    </script>
+</body>
+</html>

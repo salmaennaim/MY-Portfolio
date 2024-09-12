@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+           margin: 0;
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           height: 100vh;
+           background-color: hsl(0, 0%, 9%);
+           margin-top: 30px;
+        }
+
+
+        #ecran{
+           width: 100%;
+           padding: 20px;
+           font-size: 5rem; 
+           text-align: left;
+           border: none;
+           background-color: hsl(0, 0%, 20%) ;
+         }        
+        #calculator{
+            font-family: Arial, sans-serif; 
+            background-color: hsl(0, 0%, 15%); 
+            border-radius: 15px; 
+            max-width: 400px; 
+            overflow: hidden;
+            
+            
+            
+        }
+
+        
+        .btn{
+          display: flex;
+          flex-flow: row wrap;
+          padding: 10px;
+          align-items: center;
+          justify-content: center;
+          
+        }
+        
+        button{
+          width: 76px;
+          height: 76px;
+          border-radius: 50px;
+          border: none;
+          background-color: hsl(0, 0%, 30%); 
+          color: white; 
+          font-size: 3rem;
+          font-weight: bold;
+          cursor: pointer;
+          margin-right: 7px;
+          margin-bottom: 7px;
+        }
+        button:hover{
+            background-color: hsl(0, 0%, 40%);
+        }
+        button:active{
+            background-color: hsl(0, 0%, 50%);
+        }
+        .rBtn{
+            background-color: hsl(35, 100%, 55%);
+        }
+        .rBtn:hover{
+            background-color: hsl(35, 100%, 65%);
+        }
+        .btnTop{
+            background-color: hsl(0, 2%, 60%);
+        }
+        .btnTop:hover{
+            background-color: hsl(0, 2%, 70%);
+        }
+    </style>
+</head>
+<body>
+    <div id="calculator">
+        <input id="ecran" readonly>
+        <div id="btn" class="btn">
+        <button onclick="clearEcran()" class="btnTop">C</button>
+        <button  onclick="negPos()"class="btnTop">+/-</button>
+        <button onclick="purcent('%')"class="btnTop">% </button>
+        <button onclick="delet()" class="rBtn">AC </button>
+        <button onclick="appendToEcran('7')">7</button>
+        <button onclick="appendToEcran('8')">8</button>
+        <button onclick="appendToEcran('9')">9 </button>
+        <button  onclick="appendToEcran('*')" class="rBtn">x</button>
+        <button onclick="appendToEcran('4')">4</button>
+        <button onclick="appendToEcran('5')">5 </button>
+        <button onclick="appendToEcran('6')">6 </button>
+        <button  onclick="appendToEcran('-')" class="rBtn">-</button>
+        <button onclick="appendToEcran('1')">1 </button>
+        <button onclick="appendToEcran('2')">2 </button>
+        <button onclick="appendToEcran('3')">3</button>
+        <button onclick="appendToEcran('+')" class="rBtn">+ </button>
+        <button onclick="appendToEcran('0')" class="zero">0</button>
+        <button  onclick="appendToEcran('.')">.</button>
+        <button  onclick="appendToEcran('/')">/</button>
+        <button onclick="calc()" class="rBtn">=</button>
+        </div>
+        
+                
+    </div>
+    <script>
+       
+
+        var ecran =document.getElementById("ecran");
+
+        function appendToEcran(chiffre){
+           ecran.value += chiffre;
+        }
+        
+        function clearEcran(){
+            ecran.value ="";
+        }
+
+        function negPos(){
+            ecran.value = -parseFloat(ecran.value);
+        }
+
+        function purcent(){
+            ecran.value = "0.0"+parseFloat(ecran.value);
+        }
+        function delet(){
+            ecran.value = ecran.value/10
+            ecran.value = parseInt(ecran.value)
+            
+
+        }
+
+        function calc(){
+            
+                ecran.value = eval(ecran.value);
+            
+        }
+</script>
+</body>
+</html>
