@@ -792,7 +792,8 @@ footer .social a:hover{
     margin-bottom: 1rem;
 }
 
-.Exercices-box p{
-    font-size: 1.6rem;
-    margin: 1rem 0 3rem;
+.Exercices-box img{
+    width: 80px;
+    height: 80px;
+    margin-bottom: 1.5rem;
 }
